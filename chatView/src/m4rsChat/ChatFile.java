@@ -12,4 +12,17 @@ public class ChatFile {
             fileArray.add(nextLine);
         }
     }
+
+    public int numberOfMessages(){
+        return (fileArray.size()/3)-1;
+    }
+
+    public List<String> accessMessage(int i){
+        List<String> message = new ArrayList<String>();
+        for(int x = 0; x<2; x++){
+            message.add(fileArray.get(i+0));
+        }
+
+        return message;
+    }
 }
