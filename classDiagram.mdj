@@ -430,9 +430,9 @@
 											"font": "Arial;13;1",
 											"left": 381,
 											"top": 383,
-											"width": 41.919921875,
+											"width": 51.28271484375,
 											"height": 13,
-											"text": "File"
+											"text": "ChatFile"
 										},
 										{
 											"_type": "LabelView",
@@ -463,7 +463,7 @@
 									"font": "Arial;13;0",
 									"left": 376,
 									"top": 376,
-									"width": 51.919921875,
+									"width": 61.28271484375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF5zC/19TAaqXM="
@@ -490,7 +490,7 @@
 									"font": "Arial;13;0",
 									"left": 376,
 									"top": 401,
-									"width": 51.919921875,
+									"width": 61.28271484375,
 									"height": 10
 								},
 								{
@@ -505,7 +505,7 @@
 									"font": "Arial;13;0",
 									"left": 376,
 									"top": 411,
-									"width": 51.919921875,
+									"width": 61.28271484375,
 									"height": 10
 								},
 								{
@@ -543,7 +543,7 @@
 							"containerChangeable": true,
 							"left": 376,
 							"top": 376,
-							"width": 51.919921875,
+							"width": 61.28271484375,
 							"height": 45,
 							"nameCompartment": {
 								"$ref": "AAAAAAF5zC/19TAZ++M="
@@ -2865,7 +2865,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF5zC3VsC+8lCE="
 					},
-					"name": "File",
+					"name": "ChatFile",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -2950,6 +2950,22 @@
 							}
 						}
 					]
+				},
+				{
+					"_type": "UMLInterface",
+					"_id": "AAAAAAF5zD6x/0KpZgM=",
+					"_parent": {
+						"$ref": "AAAAAAF5zC3VsC+8lCE="
+					},
+					"name": "Interface1"
+				},
+				{
+					"_type": "UMLClass",
+					"_id": "AAAAAAF55wBWgUTT2F0=",
+					"_parent": {
+						"$ref": "AAAAAAF5zC3VsC+8lCE="
+					},
+					"name": "Message"
 				}
 			]
 		}
