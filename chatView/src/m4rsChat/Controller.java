@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
 
 /**
  * Controls the GUI elements and enables file loading and text displaying actions
@@ -41,7 +42,6 @@ public class Controller {
 
         textFlow.getChildren().removeAll(); //clears out all text in textflow
         textFlow.getChildren().clear();
-        textFlow.setLayoutY(0.5);
 
         FileChooser fileChoose = new FileChooser();
         fileChoose.setTitle("Select a chat log");
@@ -55,7 +55,10 @@ public class Controller {
             FileInputStream fileInputStream;
             try {
                 fileInputStream = new FileInputStream(file);
-                fileName.setText(file.getAbsolutePath());
+                Path path = Path.of(file.getAbsolutePath());
+                System.out.println(path);
+                System.out.println(path.relativize(path));
+                fileName.setText(String.valueOf(path));
             } catch (FileNotFoundException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
                 return;
@@ -83,7 +86,43 @@ public class Controller {
     }
 
     public void openButton(ActionEvent actionEvent) {
+        /**
+         * Opens file at path in fileName text field
+         */
+
         System.out.println(fileName.getText());
+        textFlow.getChildren().removeAll(); //clears out all text in textflow
+        textFlow.getChildren().clear();
+        //textFlow = new TextFlow();
+
+        File file = new File(fileName.getText());
+
+        if(file == null){
+            return;
+        }
+        else{
+            FileInputStream fileInputStream;
+            try {
+                fileInputStream = new FileInputStream(file);
+                Path path = Path.of(file.getAbsolutePath());
+                System.out.println(path);
+                System.out.println(path.relativize(path));
+                fileName.setText(String.valueOf(path));
+            } catch (FileNotFoundException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
+                return;
+            }
+            //System.out.println(file.getAbsolutePath());
+
+            FileLoader fileLoader = new FileLoader();
+            fileLoader.loadFile(fileInputStream);
+
+
+            for(int i=0; i<FileLoader.chatFile.numberOfMessages(); i++) {
+                Text[] messageText = fileLoader.flowMessage(i);
+                textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
+            }
+        }
     }
 
     public void mouseClick(MouseEvent mouseEvent) {
