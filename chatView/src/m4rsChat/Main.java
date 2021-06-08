@@ -4,7 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class Main extends Application {
 
@@ -14,11 +19,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("chatView_m4rs");
-        primaryStage.setScene(new Scene(root, 600, 900));
-        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 900, 900));
+        primaryStage.setResizable(true);
         primaryStage.show();
 
         stage = primaryStage;
+
+
+
     }
 
 
