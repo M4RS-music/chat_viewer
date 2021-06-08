@@ -19,7 +19,7 @@ public class ChatFile {
 
     public List<String> accessMessage(int i){
         List<String> message = new ArrayList<String>();
-        for(int x = 0; x<2; x++){
+        for(int x = 0; x<3; x++){
             message.add(fileArray.get(i+x));
         }
         System.out.println(message);

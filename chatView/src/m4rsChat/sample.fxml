@@ -5,9 +5,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -24,18 +26,26 @@
       <RowConstraints maxHeight="25.5" minHeight="10.0" prefHeight="25.5" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="245.5" minHeight="10.0" prefHeight="245.5" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="229.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="118.5" minHeight="0.0" prefHeight="17.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextFlow fx:id="textFlow" onMouseClicked="#mouseClick" prefHeight="614.0" prefWidth="632.0" textAlignment="RIGHT" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-         <effect>
-            <Shadow />
-         </effect>
-      </TextFlow>
+      <ScrollPane prefHeight="278.0" prefWidth="349.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="560.0" prefWidth="718.0">
+               <children>
+                  <TextFlow fx:id="textFlow" onMouseClicked="#mouseClick" prefHeight="560.0" prefWidth="719.0" textAlignment="RIGHT">
+                     <opaqueInsets>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </opaqueInsets>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </TextFlow>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
       <MenuBar prefHeight="23.0" prefWidth="737.0" GridPane.columnSpan="3" GridPane.valignment="TOP">
         <menus>
           <Menu mnemonicParsing="false" text="File">

@@ -33,7 +33,7 @@ public class Controller {
         textFlow.getChildren().clear();
         FileChooser fileChoose = new FileChooser();
         fileChoose.setTitle("Select a chat log");
-        //fileChoose.setInitialDirectory();
+        fileChoose.setInitialDirectory(new File("./"));
         File file = fileChoose.showOpenDialog(Main.stage);
 
         if(file == null){
@@ -43,6 +43,7 @@ public class Controller {
             FileInputStream fileInputStream;
             try {
                 fileInputStream = new FileInputStream(file);
+                fileName.setText(file.getAbsolutePath());
             } catch (FileNotFoundException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
                 return;
@@ -53,8 +54,9 @@ public class Controller {
             fileLoader.loadFile(fileInputStream);
 
 
-            for(int i=0; i<FileLoader.chatFile.numberOfMessages()*3; i++) {
-                textFlow.getChildren().addAll(fileLoader.flowFile(i));
+            for(int i=0; i<FileLoader.chatFile.numberOfMessages(); i++) {
+                Text[] messageText = fileLoader.flowFile(i);
+                textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
             }
         }
 
