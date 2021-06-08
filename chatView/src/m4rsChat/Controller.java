@@ -1,5 +1,6 @@
 package m4rsChat;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -33,6 +34,11 @@ public class Controller {
 
 
     public void fileOpen(ActionEvent actionEvent) {
+        /**
+         * Creates an instance of FileLoader and Loads a file with it creating an instance of ChatFile that is then used
+         * to display the messages in the file on textFlow
+         */
+
         textFlow.getChildren().removeAll(); //clears out all text in textflow
         textFlow.getChildren().clear();
         textFlow.setLayoutY(0.5);
@@ -54,7 +60,7 @@ public class Controller {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
                 return;
             }
-            System.out.println(file.getAbsolutePath());
+            //System.out.println(file.getAbsolutePath());
 
             FileLoader fileLoader = new FileLoader();
             fileLoader.loadFile(fileInputStream);
@@ -70,6 +76,10 @@ public class Controller {
     }
 
     public void fileClose(ActionEvent actionEvent) {
+        /**
+         * Closes the application when user clicks menu File>Close
+         */
+        Platform.exit();
     }
 
     public void openButton(ActionEvent actionEvent) {
