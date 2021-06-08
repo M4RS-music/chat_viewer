@@ -11,12 +11,15 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
-
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * Controls the GUI elements and enables file loading and text displaying actions
+ *
+ * M4RS 6/8/21
+ */
 
 public class Controller {
 
@@ -26,11 +29,14 @@ public class Controller {
     public MenuItem fileClose;
     public MenuItem fileOpen;
     public TextFlow textFlow;
+    public Slider fontSizeSlider;
 
 
     public void fileOpen(ActionEvent actionEvent) {
         textFlow.getChildren().removeAll(); //clears out all text in textflow
         textFlow.getChildren().clear();
+        textFlow.setLayoutY(0.5);
+
         FileChooser fileChoose = new FileChooser();
         fileChoose.setTitle("Select a chat log");
         fileChoose.setInitialDirectory(new File("./"));
@@ -55,7 +61,7 @@ public class Controller {
 
 
             for(int i=0; i<FileLoader.chatFile.numberOfMessages(); i++) {
-                Text[] messageText = fileLoader.flowFile(i);
+                Text[] messageText = fileLoader.flowMessage(i);
                 textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
             }
         }
@@ -87,12 +93,19 @@ public class Controller {
         Text text_2 = new Text("The computer science portal for geeks");
 
         // set the text color
-        //text_2.setFill(Color.BLUE);
+        text_2.setStyle("-fx-text-base-color: white;");
 
         // set font of the text
-        text_2.setFont(Font.font("Sans", FontPosture.ITALIC, 15));
+        text_2.setFont(Font.font("Sans", FontPosture.ITALIC, 35));
 
         textFlow.getChildren().addAll(text_1, text_2);
     }
 
+    public void changeFontSizeMenu(MouseEvent mouseEvent) {
+       // textFlow.set(Font.font("Sans", FontPosture.ITALIC, fontSizeSlider.getValue()));
+        textFlow.setStyle("-fx-font: " + fontSizeSlider.getValue() + " Sans");
+        //textFlow.setStyle("-fx-background-color: blue");
+        //textFlow.requestLayout();
+        System.out.println("grad");
+    }
 }
