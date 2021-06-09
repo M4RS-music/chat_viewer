@@ -30,9 +30,9 @@
    <children>
       <ScrollPane prefHeight="278.0" prefWidth="349.0" style="-fx-background-color: #4e4e4e; -fx-border-color: #00ccff;" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1122.0" prefWidth="1707.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1122.0" prefWidth="1150.0">
                <children>
-                  <TextFlow fx:id="textFlow" focusTraversable="true" layoutX="14.0" maxHeight="20000.0" maxWidth="1920.0" minHeight="20000.0" minWidth="1150.0" onMouseClicked="#mouseClick" prefHeight="20000.0" prefWidth="1150.0" style="-fx-background-color: #4e4e4e;" AnchorPane.bottomAnchor="-1085.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TextFlow fx:id="textFlow" focusTraversable="true" layoutX="14.0" maxHeight="20000.0" maxWidth="1920.0" minHeight="20000.0" minWidth="1150.0" onMouseClicked="#mouseClick" prefHeight="20000.0" prefWidth="1140.0" style="-fx-background-color: #4e4e4e;" AnchorPane.bottomAnchor="-1085.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <opaqueInsets>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </opaqueInsets>

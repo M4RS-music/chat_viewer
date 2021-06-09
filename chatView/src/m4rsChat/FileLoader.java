@@ -1,4 +1,7 @@
 package m4rsChat;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -20,6 +23,24 @@ import java.util.regex.Pattern;
 public class FileLoader {
     String lastName = null;
     static ChatFile chatFile = new ChatFile();
+
+//    public boolean checkSyntax(FileInputStream fileInputStream){
+//        /**
+//         * Checks if the chatfile is correctly structured and alerts the user if it isn't
+//         */
+//        Scanner scanner = new Scanner(fileInputStream);
+//        int amountPastBlankSpace = 0;
+//
+//        while (scanner.hasNextLine()) { //Scan fileIOStream nextLine
+//            String line = scanner.nextLine();
+//            Pattern upToColon = Pattern.compile(",.*$");
+//            Matcher m1 = upToColon.matcher(line);
+//            if(!m1.replaceFirst("").equals("Time")){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 
 
@@ -50,7 +71,7 @@ public class FileLoader {
         Matcher m2 = pattern.matcher(message.get(1));
         Matcher m3 = pattern.matcher(message.get(2));
 
-        System.out.println(m1.replaceFirst(""));
+        //System.out.println(m1.replaceFirst(""));
 
         messageText[0] = new Text("[" + m1.replaceFirst("") + "] "); //Create Text for <time of msg>
 
@@ -74,6 +95,7 @@ public class FileLoader {
         messageText[1].setStyle("-fx-fill: blue;");
         messageText[2].setFont(Font.font("Verdana", 12));
         messageText[2].setStyle("-fx-font-weight: bold;");
+
         return messageText;
 
     }

@@ -42,7 +42,7 @@ public class ChatFile {
         for(int x = 0; x<3; x++){
             message.add(fileArray.get(i+x));
         }
-        System.out.println(message);
+       // System.out.println(message);
         return message;
 
     }

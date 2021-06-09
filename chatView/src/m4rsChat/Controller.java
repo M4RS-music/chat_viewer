@@ -6,12 +6,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,22 +45,23 @@ public class Controller {
 
         textFlow.getChildren().removeAll(); //clears out all text in textflow
         textFlow.getChildren().clear();
+        fileName.setText("LOADING FILE");
 
         FileChooser fileChoose = new FileChooser();
         fileChoose.setTitle("Select a chat log");
         fileChoose.setInitialDirectory(new File("./"));
         File file = fileChoose.showOpenDialog(Main.stage);
 
-        if(file == null){
+        if (file == null) {
+            fileName.setText(null);
             return;
-        }
-        else{
+        } else {
             FileInputStream fileInputStream;
             try {
                 fileInputStream = new FileInputStream(file);
                 Path path = Path.of(file.getAbsolutePath());
-                System.out.println(path);
-                System.out.println(path.relativize(path));
+                //System.out.println(path);
+                //System.out.println(path.relativize(path));
                 fileName.setText(String.valueOf(path));
             } catch (FileNotFoundException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
@@ -67,16 +71,37 @@ public class Controller {
 
             FileLoader fileLoader = new FileLoader();
             fileLoader.chatFile.clearFileArray();
+//            if(fileLoader.checkSyntax(fileInputStream)){
+//                new Alert(Alert.AlertType.ERROR, "Error file syntax", ButtonType.OK);
+//            }
             fileLoader.loadFile(fileInputStream);
 
 
-            for(int i=0; i<=FileLoader.chatFile.numberOfMessages(); i++) {
+            for (int i = 0; i <= FileLoader.chatFile.numberOfMessages(); i++) {
                 Text[] messageText = fileLoader.flowMessage(i);
                 textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
+//                Text text1 = messageText[2];
+//                if (text1.getText().contains(":)")) {
+//                    //System.out.println("moji match");
+//                    ImageView imageView = new ImageView("http://files.softicons.com/download/web-icons/network-and-security-icons-by-artistsvalley/png/16x16/Regular/Friend%20Smiley.png");
+//                    // Remove :) from text
+//                    text1.setText(text1.getText().replace(":)", " "));
+//                    textFlow.getChildren().addAll(text1, imageView);
+//                }else if (text1.getText().contains(":(")) {
+//                    //System.out.println("moji match");
+//                    ImageView imageView = new ImageView("https://files.softicons.com/download/web-icons/august-icon-set-by-austintheheller/ico/Smiley%20Confused.ico");
+//                    // Remove :) from text
+//                    text1.setText(text1.getText().replace(":)", " "));
+//                    textFlow.getChildren().addAll(text1, imageView);
+//                }
+//
+//                else {
+//                    textFlow.getChildren().add(text1);
+//                }
             }
+
+
         }
-
-
     }
 
     public void fileClose(ActionEvent actionEvent) {
@@ -97,6 +122,7 @@ public class Controller {
         //textFlow = new TextFlow();
 
         File file = new File(fileName.getText());
+        fileName.setText("LOADING FILE");
 
         if(file == null){
             return;
@@ -106,8 +132,8 @@ public class Controller {
             try {
                 fileInputStream = new FileInputStream(file);
                 Path path = Path.of(file.getAbsolutePath());
-                System.out.println(path);
-                System.out.println(path.relativize(path));
+                //System.out.println(path);
+                //System.out.println(path.relativize(path));
                 fileName.setText(String.valueOf(path));
             } catch (FileNotFoundException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
@@ -128,7 +154,7 @@ public class Controller {
     }
 
     public void mouseClick(MouseEvent mouseEvent) {
-       // System.out.println(mouseEvent.getSceneX());
+       // System.out.println(mouseEvent.getSceneX()); //just test function
        // System.out.println(mouseEvent.getX());
 
         // create text
