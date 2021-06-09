@@ -37,6 +37,7 @@ public class Controller {
     public MenuItem fileClose;
     public MenuItem fileOpen;
     public TextFlow textFlow;
+    String lastPath = "./";
 
 
 
@@ -55,8 +56,9 @@ public class Controller {
         fileChoose.getExtensionFilters().add(extFilter);
 
         fileChoose.setTitle("Select a chat log");
-        fileChoose.setInitialDirectory(new File("./"));
+        fileChoose.setInitialDirectory(new File(lastPath));
         File file = fileChoose.showOpenDialog(Main.stage);
+
 
         if (file == null) {
             fileName.setText(null);
@@ -81,6 +83,7 @@ public class Controller {
 //                new Alert(Alert.AlertType.ERROR, "Error file syntax", ButtonType.OK);
 //            }
             fileLoader.loadFile(fileInputStream);
+            lastPath = file.getParent();
 
 
             for (int i = 0; i <= FileLoader.chatFile.numberOfMessages(); i++) {
