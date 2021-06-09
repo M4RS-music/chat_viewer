@@ -69,10 +69,10 @@ public class FileLoader {
         //System.out.println(m2.replaceFirst("") == lastName);
         messageText[2] = new Text(m3.replaceFirst("") + "\n"); //Create Text for <msg body>
 
-        messageText[0].setFont(Font.font("Verdana", 25)); //Setting fonts and styling for Texts
-        messageText[1].setFont(Font.font("Verdana", 25));
+        messageText[0].setFont(Font.font("Verdana", 12)); //Setting fonts and styling for Texts
+        messageText[1].setFont(Font.font("Verdana", 12));
         messageText[1].setStyle("-fx-fill: blue;");
-        messageText[2].setFont(Font.font("Verdana", 25));
+        messageText[2].setFont(Font.font("Verdana", 12));
         messageText[2].setStyle("-fx-font-weight: bold;");
         return messageText;
 

@@ -19,7 +19,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("chatView_m4rs");
-        primaryStage.setScene(new Scene(root, 920, 880));
+        primaryStage.setScene(new Scene(root, 1060, 970));
+        primaryStage.setMaxHeight(1080);
+        primaryStage.setMaxWidth(1420);
+        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(860);
         primaryStage.setResizable(true);
         primaryStage.show();
 

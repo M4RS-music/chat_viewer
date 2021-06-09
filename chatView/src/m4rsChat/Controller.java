@@ -31,7 +31,7 @@ public class Controller {
     public MenuItem fileClose;
     public MenuItem fileOpen;
     public TextFlow textFlow;
-    public Slider fontSizeSlider;
+
 
 
     public void fileOpen(ActionEvent actionEvent) {
@@ -66,10 +66,11 @@ public class Controller {
             //System.out.println(file.getAbsolutePath());
 
             FileLoader fileLoader = new FileLoader();
+            fileLoader.chatFile.clearFileArray();
             fileLoader.loadFile(fileInputStream);
 
 
-            for(int i=0; i<FileLoader.chatFile.numberOfMessages(); i++) {
+            for(int i=0; i<=FileLoader.chatFile.numberOfMessages(); i++) {
                 Text[] messageText = fileLoader.flowMessage(i);
                 textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
             }
@@ -115,10 +116,11 @@ public class Controller {
             //System.out.println(file.getAbsolutePath());
 
             FileLoader fileLoader = new FileLoader();
+            fileLoader.chatFile.clearFileArray();
             fileLoader.loadFile(fileInputStream);
 
 
-            for(int i=0; i<FileLoader.chatFile.numberOfMessages(); i++) {
+            for(int i=0; i<=FileLoader.chatFile.numberOfMessages(); i++) {
                 Text[] messageText = fileLoader.flowMessage(i);
                 textFlow.getChildren().addAll(messageText[0], messageText[1], messageText[2]);
             }
@@ -130,31 +132,24 @@ public class Controller {
        // System.out.println(mouseEvent.getX());
 
         // create text
-        Text text_1 = new Text("GeeksforGeeks\n");
-
+       // Text text_1 = new Text("GeeksforGeeks\n");
+////
         // set the text color
         //text_1.setFill(Color.RED);
 
         // set font of the text
-        text_1.setFont(Font.font("Verdana", 25));
+    //    text_1.setFont(Font.font("Verdana", 25));
 
         // create text
-        Text text_2 = new Text("The computer science portal for geeks");
+       // Text text_2 = new Text("The computer science portal for geeks");
 
         // set the text color
-        text_2.setStyle("-fx-text-base-color: white;");
+       // text_2.setStyle("-fx-text-base-color: white;");
 
         // set font of the text
-        text_2.setFont(Font.font("Sans", FontPosture.ITALIC, 35));
+        ///text_2.setFont(Font.font("Sans", FontPosture.ITALIC, 35));
 
-        textFlow.getChildren().addAll(text_1, text_2);
+       // textFlow.getChildren().addAll(text_1, text_2);
     }
 
-    public void changeFontSizeMenu(MouseEvent mouseEvent) {
-       // textFlow.set(Font.font("Sans", FontPosture.ITALIC, fontSizeSlider.getValue()));
-        textFlow.setStyle("-fx-font: " + fontSizeSlider.getValue() + " Sans");
-        //textFlow.setStyle("-fx-background-color: blue");
-        //textFlow.requestLayout();
-        System.out.println("grad");
-    }
 }

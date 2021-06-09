@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -29,11 +28,11 @@
       <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="17.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ScrollPane prefHeight="278.0" prefWidth="349.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+      <ScrollPane prefHeight="278.0" prefWidth="349.0" style="-fx-background-color: #4e4e4e; -fx-border-color: #00ccff;" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="844.0" prefWidth="1151.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1122.0" prefWidth="1707.0">
                <children>
-                  <TextFlow fx:id="textFlow" focusTraversable="true" maxHeight="9999.0" maxWidth="9999.0" minHeight="845.0" minWidth="1150.0" onMouseClicked="#mouseClick" prefHeight="845.0" prefWidth="1150.0" AnchorPane.bottomAnchor="-285.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-432.0" AnchorPane.topAnchor="0.0">
+                  <TextFlow fx:id="textFlow" focusTraversable="true" layoutX="14.0" maxHeight="20000.0" maxWidth="1920.0" minHeight="20000.0" minWidth="1150.0" onMouseClicked="#mouseClick" prefHeight="20000.0" prefWidth="1150.0" style="-fx-background-color: #4e4e4e;" AnchorPane.bottomAnchor="-1085.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <opaqueInsets>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </opaqueInsets>
@@ -42,7 +41,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <MenuBar prefHeight="23.0" prefWidth="737.0" GridPane.columnSpan="3" GridPane.valignment="TOP">
+      <MenuBar prefHeight="23.0" prefWidth="737.0" style="-fx-background-color: #00ccff;" GridPane.columnSpan="3" GridPane.valignment="TOP">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -50,33 +49,27 @@
               <MenuItem fx:id="fileClose" mnemonicParsing="false" onAction="#fileClose" text="Close" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Settings">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Font Size">
-                     <graphic>
-                        <Slider fx:id="fontSizeSlider" onDragDetected="#changeFontSizeMenu" />
-                     </graphic>
-                  </MenuItem>
-               </items>
-            </Menu>
         </menus>
       </MenuBar>
-      <GridPane prefHeight="119.0" prefWidth="1599.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+      <GridPane prefHeight="119.0" prefWidth="1599.0" style="-fx-background-color: #4e4e4e; -fx-border-color: #00ccff;" GridPane.columnSpan="3" GridPane.rowIndex="4">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="965.0" minWidth="10.0" prefWidth="961.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="0.0" prefWidth="172.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.5" minWidth="0.0" prefWidth="13.5" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1094.5" minWidth="10.0" prefWidth="932.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="0.0" prefWidth="174.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="fileName" promptText="Absolute Path" style="-fx-font-size: 10;">
+            <TextField fx:id="fileName" promptText="Absolute Path" style="-fx-font-size: 10; -fx-background-color: #d9d9d9; -fx-border-color: #00ccff;">
                <font>
-                  <Font name="Candara Light" size="12.0" />
+                  <Font name="Candara Bold Italic" size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButton" prefHeight="25.0" prefWidth="171.0" text="Open" GridPane.columnIndex="1" />
+            <Button fx:id="openButton" graphicTextGap="1.0" maxHeight="20.0" mnemonicParsing="false" onAction="#openButton" prefHeight="20.0" prefWidth="183.0" style="-fx-background-color: #333333; -fx-border-color: #00ccff;" text="Open" textFill="#00ccff" GridPane.columnIndex="1">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
    </children>

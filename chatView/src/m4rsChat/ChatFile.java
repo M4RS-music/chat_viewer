@@ -46,4 +46,11 @@ public class ChatFile {
         return message;
 
     }
+
+    public void clearFileArray(){
+        /**
+         * Clears out data from the previously loaded file
+         */
+        fileArray.removeAll(fileArray);
+    }
 }
