@@ -1,5 +1,6 @@
 package m4rsChat;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -19,6 +20,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Controls the GUI elements and enables file loading and text displaying actions
@@ -48,6 +51,9 @@ public class Controller {
         fileName.setText("LOADING FILE");
 
         FileChooser fileChoose = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("MSG files (*.msg)", "*.msg");
+        fileChoose.getExtensionFilters().add(extFilter);
+
         fileChoose.setTitle("Select a chat log");
         fileChoose.setInitialDirectory(new File("./"));
         File file = fileChoose.showOpenDialog(Main.stage);
@@ -116,25 +122,49 @@ public class Controller {
          * Opens file at path in fileName text field
          */
 
-        System.out.println(fileName.getText());
+        //System.out.println(fileName.getText());
         textFlow.getChildren().removeAll(); //clears out all text in textflow
         textFlow.getChildren().clear();
-        //textFlow = new TextFlow();
 
-        File file = new File(fileName.getText());
+
+        File file;
+        try {
+            file = new File(fileName.getText());
+            //Path path = Path.of(file.getAbsolutePath());
+            //System.out.println(path);
+            //System.out.println(path.relativize(path));
+            //fileName.setText(String.valueOf(path));
+        } catch (NullPointerException e) {
+            new Alert(Alert.AlertType.ERROR, "File Name Empty", ButtonType.OK).showAndWait();
+            System.out.println("ciowouf");
+            fileName.setText(null);
+            return;
+        }
         fileName.setText("LOADING FILE");
 
-        if(file == null){
+        Pattern pattern = Pattern.compile("^.*(?=(\\.msg))"); //Match everything up to the first colon
+        Matcher m1 = pattern.matcher(file.getAbsolutePath());
+
+        if(!m1.replaceFirst("").equals(".msg")){
+            new Alert(Alert.AlertType.ERROR, "File Does Not Have A '.msg' Extension", ButtonType.OK).showAndWait();
+            fileName.setText(null);
+            return;
+        }
+
+        //System.out.println(file.exists());
+        if(!file.exists()){
+            new Alert(Alert.AlertType.ERROR, "File Does Not Exist", ButtonType.OK).showAndWait();
+            fileName.setText(null);
             return;
         }
         else{
             FileInputStream fileInputStream;
             try {
                 fileInputStream = new FileInputStream(file);
-                Path path = Path.of(file.getAbsolutePath());
+                //Path path = Path.of(file.getAbsolutePath());
                 //System.out.println(path);
                 //System.out.println(path.relativize(path));
-                fileName.setText(String.valueOf(path));
+                //fileName.setText(String.valueOf(path));
             } catch (FileNotFoundException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
                 return;
