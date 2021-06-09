@@ -21,7 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("chatView_m4rs");
         primaryStage.setScene(new Scene(root, 1060, 970));
         primaryStage.setMaxHeight(1080);
-        primaryStage.setMaxWidth(1420);
+        primaryStage.setMaxWidth(1150);
         primaryStage.setMinHeight(600);
         primaryStage.setMinWidth(860);
         primaryStage.setResizable(true);
